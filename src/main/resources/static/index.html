@@ -16,15 +16,23 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 </head>
 <body onLoad="pointerHandler.init()">
-    <div id="App">
+    
+    <div class="ex1",id="App">
+
+        <div class="p">
         <h1>Blueprints</h1>
-        <div>
             <h2 id="campo1">Author</h2>
             <input type="text" id="Author" placeholder="name"/>
-            <button onClick="handlerBlueprints.updateBlueprints(Author.value)">Get blueprints</button>
+            <button type="button" onClick="handlerBlueprints.updateBlueprints(Author.value)">Get blueprints</button>
         </div>
+
         <div>
-            <div class="derecha">
+            <input type="text" id="NewName" placeholder="New Name"/>
+            <button type="button" onClick="handlerBlueprints.newBlueprint(NewName.value)">Create new blueprint</button>
+        </div>
+        
+        <div class="p">
+            <div class="izquierda">
                 <h2 id="campo2">'s blueprints</h2>
 
                 <table id="blueprints">
@@ -41,9 +49,11 @@
                 </table>
                 <h2 id="totalPoints"></h2>
             </div>
-            <div class="izquierda">
+            <div class="derecha">
                 <h2 id="canvasTitle">Current Blueprint</h2>
-                <canvas id="myCanvas" width="400" height="400"> </canvas>    
+                <canvas id="myCanvas" width="400" height="400"> </canvas> 
+                <button  type="button" onClick="handlerBlueprints.saveUpdate()">Save/Update</button>
+                <button  type="button" onClick="handlerBlueprints.deleteBlueprint()">Delete</button>
             </div>
             
             

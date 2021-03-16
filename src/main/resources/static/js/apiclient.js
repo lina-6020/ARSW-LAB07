@@ -26,8 +26,50 @@ var apiclient = (function () {
       }
     });
   };
+
+  var saveBlueprint = function (blueprint) {
+    var author = blueprint.author;
+    var name = blueprint.name;
+    var urlSend = url + author + "/" + name;
+    return $.ajax({
+      url: urlSend,
+      type: "PUT",
+      data: JSON.stringify(blueprint),
+      contentType: "application/json",
+    }).then(function () {
+      handlerBlueprints.updateBlueprints(author);
+    });
+  };
+
+  var newBlueprint = function (author, newName, callBack) {
+    return $.ajax({
+      url: url,
+      type: "POST",
+      data: `{"author":"${author}","name":"${newName}","points":[] }`,
+      contentType: "application/json",
+    })
+      .then(function () {
+        handlerBlueprints.updateBlueprints(author);
+      })
+      .then(function () {
+        callBack([]);
+      });
+  };
+
+  var deleteBlueprint = function () {
+    return $.ajax({
+      url: url,
+      type: "DELETE",
+      data: ``,
+      contentType: "application/json",
+    });
+  };
+
   return {
     getBlueprintsByAuthor: getBlueprintsByAuthor,
     getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor,
+    saveBlueprint: saveBlueprint,
+    newBlueprint: newBlueprint,
+    deleteBlueprint: deleteBlueprint,
   };
 })();

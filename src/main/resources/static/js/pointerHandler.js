@@ -14,14 +14,12 @@ var pointerHandler = (function () {
 
   var _draw = function (event) {
     // Event handler called for each pointerdown event:
-    var canvas = document.getElementById("myCanvas"),
-      context = canvas.getContext("2d");
+    var canvas = document.getElementById("myCanvas");
     var offset = _getOffset(canvas);
     app.nuevoPoint({
       x: event.pageX - offset.left,
       y: event.pageY - offset.top,
     });
-    context.fillRect(event.pageX - offset.left, event.pageY - offset.top, 5, 5);
   };
 
   var _getOffset = function (obj) {

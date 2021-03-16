@@ -11,6 +11,7 @@ var handlerBlueprints = (function () {
   };
 
   var _actualizar = function (blueprintsByAuthor) {
+   
     if (blueprintsByAuthor === undefined) {
       alert("Author does not exist");
     } else {
@@ -28,7 +29,7 @@ var handlerBlueprints = (function () {
         $("#blueprints tbody").append(
           `<tr><td>${blueprint.name}</td>
       <td>${blueprint.points}</td>
-      <td><button type="button" onClick='handlerBlueprints.getPoints("${blueprint.name}")'>Open</button></td></tr>`
+      <td><button type="button" class="boton_personalizado" onClick='handlerBlueprints.getPoints("${blueprint.name}")'>Open</button></td></tr>`
         )
       );
     }
@@ -62,10 +63,24 @@ var handlerBlueprints = (function () {
     api.getBlueprintsByNameAndAuthor(author, nameBlueprints, _putPoints);
     //apimock.getBlueprintsByNameAndAuthor(author, nameBlueprints, putPoints);
   };
+  var saveBlueprint = function () {
+    api.saveBlueprint(list);
+  };
+
+  var newBlueprint = function (newNameBlueprint) {
+    api.newBlueprint(author, newNameBlueprint, _putPoints);
+  };
+
+  var deleteBlueprint = function () {
+    api.deleteBlueprint();
+  };
 
   return {
     updateBlueprints: updateBlueprints,
     getPoints: getPoints,
     nuevoPoint: nuevoPoint,
+    saveUpdate: saveBlueprint,
+    newBlueprint: newBlueprint,
+    deleteBlueprint: deleteBlueprint,
   };
 })();
