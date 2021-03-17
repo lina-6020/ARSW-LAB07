@@ -56,15 +56,17 @@ var apiclient = (function () {
       });
   };
 
-  var deleteBlueprint = function (dataSend, callback) {
+  var deleteBlueprint = function (dataSend) {
+    var author = dataSend.author;
+    var name = dataSend.name;
+    var urlSend = url + author + "/" + name;
     return $.ajax({
-      url: url,
+      url: urlSend,
       type: "DELETE",
-      data: dataSend,
       contentType: "application/json",
     })
         .then(function () {
-          handlerBlueprints.deleteBlueprint();
+          handlerBlueprints.updateBlueprints(dataSend.author);
         })
         .then(function () {
           callBack([]);

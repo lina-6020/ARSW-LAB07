@@ -76,8 +76,8 @@ public class BlueprintsServices {
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
         return bpp.getBlueprintByAuthor(author);
     }
-    public void deleteBluePrint(Blueprint bp) throws BlueprintPersistenceException{
-        bpp.deleteBluePrint(bp);
+    public void deleteBluePrint(String author,String name) throws BlueprintPersistenceException, BlueprintNotFoundException {
+        bpp.deleteBluePrint(author,name);
     }
 
 }

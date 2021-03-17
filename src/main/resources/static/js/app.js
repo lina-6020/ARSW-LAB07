@@ -72,7 +72,9 @@ var handlerBlueprints = (function () {
   };
 
   var deleteBlueprint = function () {
-    api.deleteBlueprint();
+    api.deleteBlueprint(list);
+    _putPoints([]);
+    updateBlueprints(author);
   };
 
   return {
