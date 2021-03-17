@@ -74,15 +74,16 @@ var handlerBlueprints = (function () {
   var deleteBlueprint = function () {
     api.deleteBlueprint(list);
     _putPoints([]);
-    updateBlueprints(author);
+    api.saveBlueprint(list);
+    api.updateBlueprints(author);
   };
 
   return {
-    updateBlueprints: updateBlueprints,
     getPoints: getPoints,
     nuevoPoint: nuevoPoint,
-    saveUpdate: saveBlueprint,
     newBlueprint: newBlueprint,
     deleteBlueprint: deleteBlueprint,
+    saveUpdate: saveBlueprint,
+    updateBlueprints: updateBlueprints,
   };
 })();
