@@ -56,13 +56,19 @@ var apiclient = (function () {
       });
   };
 
-  var deleteBlueprint = function () {
+  var deleteBlueprint = function (dataSend, callback) {
     return $.ajax({
       url: url,
       type: "DELETE",
-      data: ``,
+      data: dataSend,
       contentType: "application/json",
-    });
+    })
+        .then(function () {
+          handlerBlueprints.deleteBlueprint();
+        })
+        .then(function () {
+          callBack([]);
+        });
   };
 
   return {
